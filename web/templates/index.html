@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analyse de tableau</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .stats { background: #f8f9fa; padding: 15px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>Tableau de bord des ventes</h1>
+    
+    <div class="stats">
+        <h3>Statistiques</h3>
+        <p>total vendue: {{ stats[0] }}</p>
+        <p>Montant moyenne: {{ "%.2f"|format(stats[1]) }}MGA</p>
+        <p>Vente max: {{ "%.2f"|format(stats[2]) }}MGA</p>
+    </div>
+    
+    <h2>Ventes recentes</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Produit</th>
+            <th>Montant</th>
+            <th>Date</th>
+        </tr>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale[0] }}</td>
+            <td>{{ sale[1] }}</td>
+            <td>{{ "%.2f"|format(sale[2]) }}MGA</td>
+            <td>{{ sale[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
